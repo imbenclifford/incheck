@@ -2,6 +2,9 @@
   "name": "Tabber",
   "description": "Override the new tab page with a customised one",
   "version": "0.2",
+  "background": {
+    "scripts": ["js/vendor/angular.min.js"]
+  },
   "incognito": "split",
   "chrome_url_overrides": {
     "newtab": "main.html"
