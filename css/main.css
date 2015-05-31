@@ -1,0 +1,54 @@
+body {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1.title {
+	text-align: center;
+	margin: 80px 0;
+	color: rgb(60, 60, 60);
+}
+
+.category-section {
+	padding: 0 70px;
+}
+
+.category-section h5 {
+	color: rgb(94, 94, 94);
+}
+
+.square {
+	height: 37px;
+	width: 37px;
+	border: 4px solid;
+	border-radius: 4px;
+	background-color: transparent;
+	margin: 10px;
+}
+
+.square-purple {
+	border-color: #ffa801;
+}
+
+.square-purple-full {
+	background-color: #ffa801;
+}
+
+.square-empty {
+	background-color: transparent;
+}
+
+.square-blue {
+	border-color: #01aeff;
+}
+
+.square-blue-full {
+	background-color: #01aeff;
+}
+
+.square-green {
+	border-color: #01ffb4;
+}
+
+.square-green-full {
+	background-color: #01ffb4;
+}

@@ -1,16 +1,40 @@
 <!doctype html>
-<html data-ng-app="myApp" data-ng-csp="">
-  <head>
-    <meta charset="UTF-8">
-    <title>Presently</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
-  </head>
-  <body>
-    <div class="container">
-    </div>
-    <script src="./js/vendor/angular.min.js"></script>
-    <script src="./js/vendor/angular-route.min.js"></script>
-    <script src="./js/app.js"></script>
-  </body>
+<html ng-app="myApp" ng-csp="">
+<head>
+  <meta charset="UTF-8">
+  <title>In Check</title>
+  <link rel="stylesheet" href="css/angular-csp.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  
+  <div ng-controller="MainCtrl" class="container">
+    <h1 class="title">{{message}}</h1>
+      <div class="row">
+        <div class="col-md-4 category-section">
+          <h5> Meditation </h5>
+          <div ng-repeat="box in meditation" class="square square-purple col-md-3" ng-class="{'square-empty': !box.complete, 'square-purple-full': box.complete}" ng-click="box.complete = !box.complete">{{complete}}
+          </div>
+        </div>
+        <div class="col-md-4 category-section">
+          <h5> Exercise </h5>
+          <div ng-repeat="box in exercise" class="square square-green col-md-3" ng-class="{'square-empty': !box.complete, 'square-green-full': box.complete}" ng-click="box.complete = !box.complete">{{complete}}
+          </div>
+        </div>
+        <div class="col-md-4 category-section">
+          <h5> Coursera </h5>
+          <div ng-repeat="box in coursera" class="square square-blue col-md-3" ng-class="{'square-empty': !box.complete, 'square-blue-full': box.complete}" ng-click="box.complete = !box.complete">{{complete}}
+          </div>
+        </div>
+
+      </div>
+
+  </div>
+  
+  <script src="./js/vendor/angular.min.js"></script>
+  <script src="./js/vendor/angular-route.min.js"></script>
+  <script src="./js/app.js"></script>
+</body>
 </html>
