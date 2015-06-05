@@ -8,6 +8,12 @@ h1.title {
 	color: rgb(60, 60, 60);
 }
 
+.category-section input {
+	border: none;
+}
+
+/*Boxes*/
+
 .category-section {
 	padding: 0 70px;
 }
@@ -25,11 +31,11 @@ h1.title {
 	margin: 10px;
 }
 
-.square-purple {
+.square-orange {
 	border-color: #ffa801;
 }
 
-.square-purple-full {
+.square-orange-full {
 	background-color: #ffa801;
 }
 

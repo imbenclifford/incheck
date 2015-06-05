@@ -13,24 +13,12 @@
   <div ng-controller="MainCtrl" class="container">
     <h1 class="title">{{message}}</h1>
       <div class="row">
-        <div class="col-md-4 category-section">
-          <h5> Meditation </h5>
-          <div ng-repeat="box in meditation" class="square square-purple col-md-3" ng-class="{'square-empty': !box.complete, 'square-purple-full': box.complete}" ng-click="box.complete = !box.complete">{{complete}}
-          </div>
+        <div ng-repeat="category in data" class="col-md-4 category-section">
+          <h5> <input type="text" ng-model="category.title" ng-change="save()"></h5>
+          <div ng-repeat="box in category.boxes" class="square square-{{category.color}} col-md-3" ng-class="{'square-empty': !box.complete, 'square-{{category.color}}-full': box.complete}" ng-click="checkBox(box)"></div>
         </div>
-        <div class="col-md-4 category-section">
-          <h5> Exercise </h5>
-          <div ng-repeat="box in exercise" class="square square-green col-md-3" ng-class="{'square-empty': !box.complete, 'square-green-full': box.complete}" ng-click="box.complete = !box.complete">{{complete}}
-          </div>
-        </div>
-        <div class="col-md-4 category-section">
-          <h5> Coursera </h5>
-          <div ng-repeat="box in coursera" class="square square-blue col-md-3" ng-class="{'square-empty': !box.complete, 'square-blue-full': box.complete}" ng-click="box.complete = !box.complete">{{complete}}
-          </div>
-        </div>
-
       </div>
-
+      <button ng-click="reset()">Reset</button>
   </div>
   
   <script src="./js/vendor/angular.min.js"></script>

@@ -1,33 +1,69 @@
 angular.module('myApp', [])
-.controller('MainCtrl', function($scope) {
-	$scope.test = "there!";
+.controller('MainCtrl', function($scope, User) {
 
-    $scope.squareColor = 'purple';
-    $scope.message = "This is your week"
+    $scope.message = "This is your week";
 
-    $scope.meditation = [
-		{complete: false},
-		{complete: false},
-		{complete: false},
-		{complete: false},
-		{complete: false}
-    ]
+    $scope.data = User;
 
-    $scope.exercise = [
-	    {complete: false},
-	    {complete: false},
-	    {complete: false},
-	    {complete: false},
-	    {complete: false},
-	    {complete: false},
-	    {complete: false},
-    ]
+    $scope.save = function() {
+      chrome.storage.sync.set({"userData": $scope.data}, function() {
+        // Notify that we saved.
+        console.log('Settings saved: ', $scope.data);
+      });
+    }
 
-    $scope.coursera = [
-	    {complete: false},
-	    {complete: false},
-	    {complete: false},
-    ]
+    $scope.checkBox = function(box){
+      box.complete = !box.complete;
+      $scope.save();
+    }
+
+    chrome.storage.sync.get("userData", function(obj) {
+        console.log('got userData:', obj.userData);
+        $scope.$apply($scope.data = obj.userData);
+    });
+
+    $scope.reset = function(){
+      console.log(User);
+      $scope.data = User;
+    }
+
+})
+.factory('User', function() {
+var data =[{
+          title: 'Meditation',
+          boxes: [
+        		{complete: false},
+        		{complete: false},
+        		{complete: false},
+        		{complete: false},
+        		{complete: false}
+            ],
+          color: 'orange'
+          },
+          {
+          title: 'Exercise',
+          boxes: [
+              {complete: false},
+              {complete: false},
+              {complete: false},
+              {complete: false},
+              {complete: false},
+              {complete: false},
+              {complete: false},
+            ],
+          color: 'green'
+          },{
+          title: 'Coursera',
+          boxes: [
+              {complete: false},
+              {complete: false},
+              {complete: false},
+            ],
+          color: 'blue'
+          }
+          ]
+
+    return data;
 })
 .directive('squares', function squares() {
     return {
@@ -42,14 +78,4 @@ angular.module('myApp', [])
 
             }]
     };
-})
-.factory('UserService', function() {
-  var defaults = {
-    location: 'autoip'
-  };
-  var service = {
-    user: defaults
-  };
-
-  return service;
-})
+});
